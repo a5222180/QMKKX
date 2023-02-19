@@ -11,9 +11,9 @@ import java.util.concurrent.TimeUnit;
 
 
 /**
- * @author: chenwenjun
- * @date: 2023/2/19 15:53
- * @description: TODO
+ * @Author: chenwenjun
+ * @Date: 2023/2/19 15:53
+ * @Description: 计算程序执行时间
  */
 @Component
 @Aspect
@@ -23,18 +23,22 @@ public class RunTimeAop {
 
     }
     @Around("test()")
-    public void aroundAdvice(ProceedingJoinPoint proceedingJoinPoint) {
+    public Object aroundAdvice(ProceedingJoinPoint proceedingJoinPoint) {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
+
+        Object result = null;
         try {
-            proceedingJoinPoint.proceed();
-        } catch (Throwable t) {
-            t.printStackTrace();
+            result = proceedingJoinPoint.proceed();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
         }
+
         stopWatch.stop();
         System.out.println(stopWatch.getTime(TimeUnit.MILLISECONDS)+"ms");
 //        System.out.println(stopWatch.getTime(TimeUnit.MICROSECONDS)+"μs");
 //        System.out.println(stopWatch.getTime(TimeUnit.NANOSECONDS)+"ns");
 //        System.out.println(stopWatch.getTime(TimeUnit.SECONDS)+"s");
+        return result;
     }
 }
