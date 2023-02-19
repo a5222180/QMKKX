@@ -27,6 +27,10 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional> <!-- 表示依赖不会传递 -->
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -41,7 +45,7 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>repackage</goal>maven-install-plugin
+                            <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>
