@@ -31,7 +31,11 @@ public class SortUtil {
         }
         sortUtil.bubbleSort(list.toArray());
     }
-    //冒泡排序
+    /**
+     * @Description: 冒泡排序
+     * @Author: HuDi
+     * @Date: 2023/2/24 19:56
+     */
     public  Object[] bubbleSort(Object[] arr){
         if (ArrayUtils.isNotEmpty(arr)){
             //是否完成排序
@@ -58,7 +62,38 @@ public class SortUtil {
                 }
             }
         }
-        //System.out.println(Arrays.toString(arr));
+        //System.out.println("冒泡："+Arrays.toString(arr));
+        return arr;
+    }
+
+    /**
+    * @Description: 选择排序
+    * @Author: HuDi
+    * @Date: 2023/2/24 19:56
+    */
+    public Object[] selectSort(Object[] arr){
+        if (ArrayUtils.isNotEmpty(arr)){
+            int arrLength=arr.length;
+            //保存最小值索引
+            int minIndex;
+            //保存最小值
+            int minValue;
+            //交换临时变量
+            int temp;
+            for (int i=0;i<arrLength-1;i++){
+                minIndex=i;
+                minValue= (int) arr[i];
+                for (int j=i+1;j<arrLength;j++){
+                    if (minValue>(int)arr[j]){
+                        minValue= (int) arr[j];
+                        minIndex= j;
+                    }
+                }
+                arr[minIndex]= arr[i];
+                arr[i]=minValue;
+            }
+        }
+        //System.out.println("选择："+Arrays.toString(arr));
         return arr;
     }
 }
