@@ -5,6 +5,8 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
@@ -18,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 @Aspect
 public class RunTimeAop {
+    Logger logger = LoggerFactory.getLogger("RunTimeAop");
     @Pointcut("execution (* com.hd.common.utils.SortUtil.*(..))")
     public void test() {
 
@@ -35,7 +38,8 @@ public class RunTimeAop {
         }
 
         stopWatch.stop();
-        System.out.println(stopWatch.getTime(TimeUnit.MILLISECONDS)+"ms");
+        logger.info(stopWatch.getTime(TimeUnit.MILLISECONDS)+"ms");
+        //System.out.println(stopWatch.getTime(TimeUnit.MILLISECONDS)+"ms");
 //        System.out.println(stopWatch.getTime(TimeUnit.MICROSECONDS)+"μs");
 //        System.out.println(stopWatch.getTime(TimeUnit.NANOSECONDS)+"ns");
 //        System.out.println(stopWatch.getTime(TimeUnit.SECONDS)+"s");
