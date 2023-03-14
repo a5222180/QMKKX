@@ -2,6 +2,7 @@ package com.hd;
 
 
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @description: 启动程序
  */
 @SpringBootApplication
+@MapperScan("com.hd.mapper")
 public class QmkkxApplication
 {
     public static void main(String[] args)

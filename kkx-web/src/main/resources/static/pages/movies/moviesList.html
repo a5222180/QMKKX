@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>影视列表</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<body>
+<div>
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">名称：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">标签区域</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+    </form>
+    <table id="demo" lay-filter="test"></table>
+</div>
+<script src="/layui/layui.js"></script>
+<script>
+    layui.use('table', function(){
+        var table = layui.table;
+
+        //第一个实例
+        table.render({
+            elem: '#demo'
+            ,height: 312
+            ,url: '/json/table.json' //数据接口
+            ,page: true //开启分页
+            ,cols: [[ //表头
+                {field: 'id', title: 'ID', width:'10%', sort: true, fixed: 'left'}
+                ,{field: 'username', title: '名称', width:'35%'}
+                ,{field: 'sex', title: '年份', width:'10%', sort: true}
+                ,{field: 'city', title: '地区', width:'10%'}
+                ,{field: 'sign', title: '类型', width: '10%'}
+                ,{field: 'experience', title: '是否获取资源', width: '15%', sort: true}
+                ,{field: 'score', title: '推荐程度', width: '10%', sort: true}
+            ]]
+        });
+
+    });
+</script>
+</body>
+</html>
